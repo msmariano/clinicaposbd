@@ -213,7 +213,7 @@ public class PessoaDAO implements IGenericDAO<Pessoa, Integer> {
 						animais.add(a);
 					} while (rs.next());
 				}
-				retorno.setAnimais(animais);
+				//retorno.setAnimais(animais);
 			}
 
 			return retorno;
@@ -273,7 +273,7 @@ public class PessoaDAO implements IGenericDAO<Pessoa, Integer> {
 
 			sql = "INSERT INTO ANIMAL (TIPO_ID, PESSOA_ID, NOME, NASCIMENTO) " + "VALUES (?,?,?,?)";
 			statementAnimal = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-			for (Animal a : objeto.getAnimais()) {
+			/*for (Animal a : objeto.getAnimais()) {
 				statementAnimal.setInt(1, a.getTipo().getId());
 				statementAnimal.setInt(2, objeto.getId());
 				statementAnimal.setString(3, a.getNome());
@@ -289,7 +289,7 @@ public class PessoaDAO implements IGenericDAO<Pessoa, Integer> {
 				else
 					throw new Exception("Falha ao inserir o animal do dono");
 
-			}
+			}*/
 			con.commit();
 			return;
 		} catch (Exception e) {

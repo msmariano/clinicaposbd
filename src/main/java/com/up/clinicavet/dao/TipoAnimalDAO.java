@@ -161,7 +161,7 @@ public class TipoAnimalDAO implements IGenericDAO<TipoAnimal, Integer> {
 						a.setNascimento(rs.getDate("NASCIMENTOANIMAL"));
 						a.setTipo(tpAnimal);
 
-						if (idPessoa != rs.getInt("PESSOA_ID")) {
+						/*if (idPessoa != rs.getInt("PESSOA_ID")) {
 							if(p != null)
 								p.setAnimais(animais);
 							p = new Pessoa();
@@ -171,16 +171,16 @@ public class TipoAnimalDAO implements IGenericDAO<TipoAnimal, Integer> {
 							p.setNascimento(rs.getDate("NASCIMENTOPESSOA"));
 							pessoas.add(p);
 							idPessoa = rs.getInt("PESSOA_ID");
-						}
+						}*/
 						a.setDono(p);
 						animais.add(a);
 
 					} while (rs.next());
 					
-					if(p!=null)
+					/*if(p!=null)
 						p.setAnimais(animais);
 					tpAnimal.setListaAnimal(animais);
-					tpAnimal.setListaPessoa(pessoas);
+					tpAnimal.setListaPessoa(pessoas);*/
 				}
 
 				return tpAnimal;
