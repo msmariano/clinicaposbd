@@ -37,7 +37,7 @@ public class AnimalDAO implements IGenericDAO<Animal, Integer> {
 				animal.setId(rs.getInt("animal_id"));				
 				Pessoa p = new Pessoa();
 				p.setId(rs.getInt("pessoa_id"));
-				animal.setDono(p);				
+				//animal.setDono(p);				
 				animal.setNome(rs.getString("nome"));
 				animal.setNascimento(rs.getDate("nascimento"));
 				animais.add(animal);
@@ -102,13 +102,13 @@ public class AnimalDAO implements IGenericDAO<Animal, Integer> {
 				p.setCpf(rs.getLong("CPF"));
 				p.setNome(rs.getString("nomePessoa"));
 				p.setNascimento(rs.getDate("nascimentoPessoa"));
-				retorno.setDono(p);
+				//retorno.setDono(p);
 
 				TipoAnimal ta = new TipoAnimal();
 				ta.setId(rs.getInt("TIPOANIMAL_ID"));
 				ta.setNomeRaca(rs.getString("NOMERACA"));
 				ta.setDescricao(rs.getString("descricaoRaca"));
-				retorno.setTipo(ta);
+				//retorno.setTipo(ta);
 			}
 
 			return retorno;
@@ -161,7 +161,7 @@ public class AnimalDAO implements IGenericDAO<Animal, Integer> {
 
 				Pessoa p = new Pessoa();
 				p.setId(rs.getInt("pessoa_id"));
-				retorno.setDono(p);
+				//retorno.setDono(p);
 
 				retorno.setNome(rs.getString("nome"));
 				retorno.setNascimento(rs.getDate("nascimento"));
@@ -207,8 +207,8 @@ public class AnimalDAO implements IGenericDAO<Animal, Integer> {
 			String sql = "INSERT INTO ANIMAL "
 					+ "(TIPO_ID,PESSOA_ID,NOME,NASCIMENTO) VALUES (?,?,?,?)";
 			statement = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-			statement.setLong(1, objeto.getTipo().getId());
-			statement.setLong(2, objeto.getDono().getId());
+			//statement.setLong(1, objeto.getTipo().getId());
+			//statement.setLong(2, objeto.getDono().getId());
 			statement.setString(3, objeto.getNome());
 			
 			if(objeto.getNascimento() != null)
@@ -296,7 +296,7 @@ public class AnimalDAO implements IGenericDAO<Animal, Integer> {
 			con = ConnectionFactory.getConnection();
 			String sql = "UPDATE ANIMAL set pessoa_id = ?,nome=?,nascimento =?  WHERE animal_id=?";
 			statement = con.prepareStatement(sql);
-			statement.setInt(1, objeto.getDono().getId());
+			//statement.setInt(1, objeto.getDono().getId());
 			statement.setString(2, objeto.getNome());
 			java.sql.Date DataSql = new java.sql.Date(objeto.getNascimento().getTime());
 			statement.setDate(3, DataSql);

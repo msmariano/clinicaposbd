@@ -7,15 +7,22 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+
 @Entity
-@Table(name = "TipoAnimal")
-public class TipoAnimal {
+@Table(name="Vacina")
+public class Vacina {
+	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "tipoanimal_id", updatable = false)
-	private int id;
-	@Column(length = 50, nullable = false)
-	private String nomeRaca;
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="vacina_id",updatable=false)
+	private Integer id;
+	@Column	(length=50, nullable=false)
+	private String nome;
+	@Column	(length=100, nullable=true)
+	private String descricao;
+	
+	
+	
 	@Override
 	public int hashCode() {
 		return 1;
@@ -28,22 +35,25 @@ public class TipoAnimal {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		TipoAnimal other = (TipoAnimal) obj;
-		if (id != other.id)
+		Vacina other = (Vacina) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
 			return false;
 		return true;
 	}
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
-	public String getNomeRaca() {
-		return nomeRaca;
+	public String getNome() {
+		return nome;
 	}
-	public void setNomeRaca(String nomeRaca) {
-		this.nomeRaca = nomeRaca;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 	public String getDescricao() {
 		return descricao;
@@ -51,7 +61,5 @@ public class TipoAnimal {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	@Column(length = 200, nullable = false)
-	private String descricao;
 
 }
