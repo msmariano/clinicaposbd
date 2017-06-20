@@ -4,8 +4,12 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import com.up.clinicavet.dao.TipoAnimalDAO;
+import com.up.clinicavet.model.Alergia;
+import com.up.clinicavet.model.Animal;
+import com.up.clinicavet.model.Endereco;
 import com.up.clinicavet.model.Pessoa;
+import com.up.clinicavet.model.TipoAnimal;
+import com.up.clinicavet.model.Vacina;
 
 public class Main {
 
@@ -47,9 +51,30 @@ public class Main {
 			EntityManager em = factory.createEntityManager();
 			em.getTransaction().begin();
 			Pessoa pessoa = em.find(Pessoa.class, 1);
+			Animal animal = em.find(Animal.class, 1);
+			TipoAnimal tipoAnimal = em.find(TipoAnimal.class,1);
+			Vacina vacina = em.find(Vacina.class, 1);
+			Alergia alergia = em.find(Alergia.class, 1);
+			
+			Endereco endereco = new Endereco();
+			endereco.setCep("80215-230");
+			endereco.setNumero("57");
+			endereco.setRua("Cyro Vellozo");
+			em.persist(endereco);
+			
 			em.getTransaction().commit();
 			
-		System.out.println(pessoa.getNome());
+		System.out.println("Pessoa :" +pessoa.getNome());
+		System.out.println("Animal :" +animal.getNome());
+		System.out.println("TipoAnimal :" +tipoAnimal.getNomeRaca());
+		System.out.println("Vacina :"+vacina.getNome());
+		System.out.println("Alergia :"+alergia.getNomeAlergia());
+		
+		
+		
+		
+		
+		
 			
 			
 		} catch (Exception e) {
