@@ -1,10 +1,13 @@
 package com.up.clinicavet.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -16,6 +19,10 @@ public class TipoAnimal {
 	private int id;
 	@Column(length = 50, nullable = false)
 	private String nomeRaca;
+	@OneToMany(mappedBy="TipoAnimal")
+	private List<Animal> animais;
+	
+	
 	@Override
 	public int hashCode() {
 		return 1;

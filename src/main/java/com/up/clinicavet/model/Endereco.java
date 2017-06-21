@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -20,6 +22,16 @@ public class Endereco {
 	private String cep;
 	@Column	(length=10, nullable=false)
 	private String numero;
+	@OneToOne
+	@JoinColumn(name="pessoa_id")
+	private Pessoa pessoa;	
+	
+	public Pessoa getPessoa() {
+		return pessoa;
+	}
+	public void setPessoa(Pessoa pessoa) {
+		this.pessoa = pessoa;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;

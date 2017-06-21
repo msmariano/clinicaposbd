@@ -8,6 +8,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -23,8 +26,25 @@ public class Pessoa {
 	private String nome;
 	@Column	(nullable=	true)
 	private Date nascimento;
+	@OneToOne
+	@JoinColumn(name="endereco_id")
+	private Endereco endereco;
+	@OneToMany(mappedBy="dono")
+	private List<Animal> animais;
 	
 	
+	public Endereco getEndereco() {
+		return endereco;
+	}
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
+	public List<Animal> getAnimais() {
+		return animais;
+	}
+	public void setAnimais(List<Animal> animais) {
+		this.animais = animais;
+	}
 	@Override
 	public int hashCode() {
 		return 1;
