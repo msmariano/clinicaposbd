@@ -26,12 +26,22 @@ public class Pessoa {
 	private String nome;
 	@Column	(nullable=	true)
 	private Date nascimento;
+	@Column(name="endereco_id",nullable=false)
+	private int idEndereco;
+	
 	@OneToOne
 	@JoinColumn(name="endereco_id")
 	private Endereco endereco;
 	@OneToMany(mappedBy="dono")
 	private List<Animal> animais;
 	
+	
+	public int getIdEndereco() {
+		return idEndereco;
+	}
+	public void setIdEndereco(int idEndereco) {
+		this.idEndereco = idEndereco;
+	}
 	
 	public Endereco getEndereco() {
 		return endereco;
